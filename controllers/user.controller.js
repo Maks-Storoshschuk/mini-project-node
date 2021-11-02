@@ -8,18 +8,22 @@ module.exports = {
         try {
             let user = await User.createUserWithHashPassword(req.body);
 
-            const token = jwtService.createActionToken();
+            const {email, name} = req.body;
 
-            await Action.create({token, type: tokenTypeEnum.ACTION, user_id: user._id});
+            if (email) {
+                const token = jwtService.createActionToken();
 
-            await emailService.sendMail(req.body.email, constants.welcome, {userName: req.body.name, token});
+                await Action.create({token, type: tokenTypeEnum.ACTION, user_id: user._id});
+
+                await emailService.sendMail(email, constants.welcome, {userName: name, token});
+            }
 
             const {avatar} = req.files;
 
-            if (avatar){
-                const uploadInfo= await S3services.uploadImage(avatar, 'users', user._id.toString());
+            if (avatar) {
+                const uploadInfo = await S3services.uploadImage(avatar, 'users', user._id.toString());
 
-                user = await User.findByIdAndUpdate(user._id, {avatar: uploadInfo.Location}, {new:true});
+                user = await User.findByIdAndUpdate(user._id, {avatar: uploadInfo.Location}, {new: true});
             }
 
             const normUser = user.userNormalizer(user);

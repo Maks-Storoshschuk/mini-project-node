@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const {config} = require('./config');
 const {Errors} = require('./errorHandler');
-const {houseRouter, userRouter} = require('./routers');
+const {houseRouter, userRouter, authRouter} = require('./routers');
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.use(fileUpload({}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// app.use('/auth', authRouter);
+app.use('/auth', authRouter);
 app.use('/houses', houseRouter);
 app.use('/users', userRouter);
 // eslint-disable-next-line no-unused-vars
