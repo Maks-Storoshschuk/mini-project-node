@@ -12,6 +12,7 @@ module.exports = {
     orderConfirmed: 'order.confirmed',
     ban: 'ban',
     FORGOT_PASSWORD: 'forgotPassword',
+    buk: 'buk',
 
     MAX_AVATAR_SIZE: 5*1024*1024,
 
@@ -22,5 +23,7 @@ module.exports = {
         'image/pjpeg',
         'image/tiff',
         'image/webp'
-    ]
+    ],
+
+    AUTHORIZATION: 'Authorization'
 };

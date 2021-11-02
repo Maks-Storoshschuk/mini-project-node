@@ -47,7 +47,16 @@ const houseSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'user',
-    }
+    },
+    payment: {
+        type: Number,
+    },
+    from: {
+        type: Date,
+    },
+    to: {
+        type: Date,
+    },
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
 houseSchema.methods = {

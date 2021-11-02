@@ -34,4 +34,24 @@ module.exports = {
 
         }
     },
+    updateUser: async (req, res, next) => {
+        try {
+            const {user_id, email} = req.body;
+            const {name} = user_id;
+
+            const token = jwtService.createActionToken();
+
+            await Action.create({token, type: tokenTypeEnum.ACTION, user_id});
+
+            await emailService.sendMail(email, constants.welcome, {userName: name, token});
+
+            const user = await User.findByIdAndUpdate(user_id,{email}, {new: true});
+
+            const newUser = user.userNormalizer(user);
+
+            res.status(constants.code201).json(newUser);
+        } catch (e) {
+            next(e);
+        }
+    },
 };

@@ -30,12 +30,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        required: true,
     },
     is_active: {
         type: Boolean,
         default: false,
-        required: true
     },
     avatar: {
         type:String

@@ -11,4 +11,8 @@ module.exports = {
         templateName: 'ban',
         subject: 'Ban'
     },
+    buk: {
+        templateName: 'buk',
+        subject: 'Здоров будь дядько!'
+    },
 };
