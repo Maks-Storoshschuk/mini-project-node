@@ -2,6 +2,7 @@ module.exports = {
     USER: 'user',
     ADMIN: 'admin',
     MANAGER: 'manager',
+    GUEST: 'guest',
 
     code201: 201,
     code204: 204,

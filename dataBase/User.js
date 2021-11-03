@@ -25,6 +25,7 @@ const userSchema = new Schema({
             constants.USER,
             constants.ADMIN,
             constants.MANAGER,
+            constants.GUEST,
         ]
     },
     password: {
@@ -49,7 +50,7 @@ userSchema.methods = {
         const object = userToNormalize.toObject();
         const fieldsToRemove = [
             'password',
-            '__v'
+            '__v',
         ];
 
         fieldsToRemove.forEach((field) => {
