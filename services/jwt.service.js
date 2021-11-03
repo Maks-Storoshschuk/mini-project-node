@@ -5,6 +5,8 @@ const {
     JWT_ACCESS_SECRET,
     JWT_REFRESH_SECRET,
     JWT_ACTION_SECRET,
+    JWT_AGREE_SECRET,
+    JWT_REFUSE_SECRET
 } = require('../config/config');
 const {tokenTypeEnum} = require('../config');
 
@@ -34,11 +36,39 @@ module.exports = {
                 case tokenTypeEnum.ACTION:
                     secret = JWT_ACTION_SECRET;
                     break;
+                case tokenTypeEnum.AGREE:
+                    secret = JWT_AGREE_SECRET;
+                    break;
+                case tokenTypeEnum.REFUSE:
+                    secret = JWT_REFUSE_SECRET;
+                    break;
             }
 
             await jwt.verify(token, secret);
         } catch (e) {
             ErrorBuilder(Errors.err401);
+        }
+    },
+
+    generateRentToken: () => {
+        const agree_token = jwt.sign({}, JWT_AGREE_SECRET, {expiresIn: '1d'});
+        const refuse_token = jwt.sign({}, JWT_REFUSE_SECRET, {expiresIn: '1d'});
+
+        return {
+            agree_token,
+            refuse_token
+        };
+    },
+
+    verifyRent: async (token) => {
+        try {
+            await jwt.verify(token, JWT_AGREE_SECRET);
+        } catch (e) {
+            try {
+                await jwt.verify(token, JWT_REFUSE_SECRET);
+            } catch (e) {
+                ErrorBuilder(Errors.err401);
+            }
         }
     },
 

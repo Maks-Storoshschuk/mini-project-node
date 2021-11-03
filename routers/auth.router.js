@@ -22,4 +22,10 @@ router.post(
     authController.logIn
 );
 
+router.post(
+    '/refresh',
+    authMiddleware.checkRefreshToken,
+    authController.refreshToken,
+);
+
 module.exports = router;

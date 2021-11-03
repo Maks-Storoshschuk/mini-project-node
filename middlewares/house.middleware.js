@@ -1,8 +1,10 @@
 const dayJs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
+
 dayJs.extend(utc);
 
-const {House} = require('../dataBase');
+const {jwtService} = require('../services');
+const {House, Rent} = require('../dataBase');
 const {houseValidator} = require('../validators');
 const {ErrorBuilder, Errors} = require('../errorHandler');
 
@@ -57,6 +59,31 @@ module.exports = {
             const daysTwo = dayJs.utc().subtract(-to, 'day');
 
             req.buk = {sum, daysOne, daysTwo};
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    checkRentToken: async (req, res, next) => {
+        try {
+            const {token} = req.params;
+
+            if (!token) {
+                ErrorBuilder(Errors.err401);
+            }
+            await jwtService.verifyRent(token);
+
+            const agree = await Rent.findOne({agree_token: token});
+
+            const refuse = await Rent.findOne({refuse_token: token});
+
+            if (!(refuse || agree)) {
+                ErrorBuilder(Errors.err401);
+            }
+
+            req.body = {refuse, agree};
 
             next();
         } catch (e) {

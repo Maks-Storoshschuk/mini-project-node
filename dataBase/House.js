@@ -34,10 +34,10 @@ const houseSchema = new Schema({
     description: {
         type: String,
         max: 200,
-        min:20,
+        min: 20,
     },
     pic: {
-        type:String
+        type: String
     },
     is_actual: {
         type: Boolean,
@@ -57,16 +57,23 @@ const houseSchema = new Schema({
     to: {
         type: Date,
     },
+    for_rent: {
+        type: Boolean
+    }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
 houseSchema.methods = {
     houseNormalizer(houseToNormalize) {
         const object = houseToNormalize.toObject();
 
-        if (object.is_actual){
+        if (object.is_actual) {
             const fieldsToRemove = [
                 'is_actual',
-                '__v'
+                '__v',
+                'payment',
+                'to',
+                'for_rent',
+                'from'
             ];
 
             fieldsToRemove.forEach((field) => {

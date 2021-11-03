@@ -1,14 +1,18 @@
 extends conteiner
 block content
-    p Привіт #{userName}
+    p Привіт #{name}
     p якшемаш
     p тут штрих хоче твою хатку орендувати
     h1 Країна #{info.country}, область #{info.region}, місто #{info.city}.
     h3 Площа #{info.volume} м^2, оплата #{info.payment}.
-    H2 Дата заїзду #{info.from}, дата виїзду #{info.to}. #{info.pic}.
+    H2 Дата заїзду #{info.from}, дата виїзду #{info.to}.
+    img(src=`${info.pic}` alt='house' style='width:100px; height:100px;').
 
     h1 Інформація про штриха  #{user.name}, телефон #{user.number}, емайл #{user.email}.
-    H2 фото #{user.avatar}.
+    H2 фото
+    img(src=`${user.avatar}` alt='user' style='width:100px; height:100px;').
 
 
-        //a(href=`http://localhost:5000/houses/${_id}`) підтвердити.
+    a(href=`http://localhost:5000/houses/confirmed/${agree_token}`) підтвердити.
+
+    a(href=`http://localhost:5000/houses/confirmed/${refuse_token}`) відмовити.

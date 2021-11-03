@@ -13,6 +13,8 @@ module.exports = {
     ban: 'ban',
     FORGOT_PASSWORD: 'forgotPassword',
     buk: 'buk',
+    reject: 'reject',
+    forRent: 'forRent',
 
     MAX_AVATAR_SIZE: 5*1024*1024,
 

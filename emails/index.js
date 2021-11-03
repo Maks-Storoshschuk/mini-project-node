@@ -15,4 +15,13 @@ module.exports = {
         templateName: 'buk',
         subject: 'Здоров будь дядько!'
     },
+    reject: {
+        templateName: 'reject',
+        subject: 'Погані новини...'
+    },
+    forRent: {
+        templateName: 'forRent',
+        subject: 'Хороші новини!'
+    },
+
 };

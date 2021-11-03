@@ -6,6 +6,8 @@ module.exports = {
 
     JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET || 'secret_word',
     JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || 'secret_word_refresh',
+    JWT_AGREE_SECRET: process.env.JWT_AGREE_SECRET || 'agree',
+    JWT_REFUSE_SECRET: process.env.JWT_REFUSE_SECRET || 'refuse',
     JWT_ACTION_SECRET: process.env.JWT_REFRESH_SECRET || 'shit_in_your_ass',
     JWT_ACTION_FORGOT_SECRET: process.env.JWT_REFRESH_SECRET || 'nice_weather',
 

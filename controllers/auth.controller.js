@@ -36,4 +36,23 @@ module.exports = {
             next(e);
         }
     },
+
+    refreshToken: async (req, res, next) => {
+        try {
+            const {refresh_token, user_id} = req.token;
+
+            await oAuth.deleteOne({refresh_token});
+
+            const tokenPair = jwtService.generateTokenPair();
+
+            await oAuth.create({
+                ...tokenPair,
+                user_id
+            });
+
+            res.json(tokenPair);
+        } catch (e) {
+            next(e);
+        }
+    },
 };

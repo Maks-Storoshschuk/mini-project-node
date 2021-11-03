@@ -1,0 +1,8 @@
+extends conteiner
+block content
+    h1 Власник житла відмовив вам у оренді
+    img(src=`${house.pic}` alt='house' style='width:100px; height:100px;').
+    h1 Країна #{house.country}, область #{house.region}, місто #{house.city}. Площа #{house.volume} м^2.
+
+
+    a(href=`http://localhost:5000/houses`) переглянути доступні оголошення.

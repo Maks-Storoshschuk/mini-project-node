@@ -144,4 +144,28 @@ module.exports = {
         }
     },
 
+    checkRefreshToken: async (req, res, next) => {
+        try {
+            const token = req.get(constants.AUTHORIZATION);
+
+            if (!token) {
+                ErrorBuilder(Errors.err401);
+            }
+
+            await jwtService.verifyToken(token, tokenTypeEnum.REFRESH);
+
+            const tokenResponse = await oAuth.findOne({refresh_token: token});
+
+            if (!tokenResponse) {
+                ErrorBuilder(Errors.err401);
+            }
+
+            req.token = tokenResponse;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
 };

@@ -30,4 +30,10 @@ router.put(
     houseController.buckHouse
 );
 
+router.get(
+    '/confirmed/:token',
+    houseMiddleware.checkRentToken,
+    houseController.confirmed
+);
+
 module.exports = router;
