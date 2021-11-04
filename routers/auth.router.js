@@ -1,4 +1,3 @@
-const {constants} = require('../config');
 const router = require('express').Router();
 
 const {authController} = require('../controllers');
@@ -14,11 +13,6 @@ router.post(
     '/',
     authMiddleware.isAuthValid,
     authMiddleware.logInMiddleware,
-    authMiddleware.checkUserRole([
-        constants.USER,
-        constants.MANAGER,
-        constants.ADMIN
-    ]),
     authController.logIn
 );
 
@@ -26,6 +20,12 @@ router.post(
     '/refresh',
     authMiddleware.checkRefreshToken,
     authController.refreshToken,
+);
+
+router.post(
+    '/logOut',
+    authMiddleware.checkAccessToken,
+    authController.logOut
 );
 
 module.exports = router;

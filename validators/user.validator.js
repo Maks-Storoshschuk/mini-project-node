@@ -32,6 +32,37 @@ const createUserValidator = Joi.object({
         .required(),
 });
 
+const updateUserValidator = Joi.object({
+    name: Joi
+        .string()
+        .alphanum()
+        .min(2)
+        .max(30)
+        .trim(),
+    number: Joi
+        .number()
+        .min(99999999999)
+        .max(999999999999),
+    email: Joi
+        .string()
+        .regex(regExp.emailRegExp)
+        .trim(),
+    role: Joi
+        .string()
+        .lowercase()
+        .allow(
+            constants.USER,
+            constants.ADMIN,
+            constants.MANAGER
+        ),
+    password: Joi
+        .string()
+        .trim()
+        .regex(regExp.passwordRegExp),
+    is_active: Joi
+        .boolean()
+});
+
 module.exports = {
-    createUserValidator
+    createUserValidator, updateUserValidator
 };

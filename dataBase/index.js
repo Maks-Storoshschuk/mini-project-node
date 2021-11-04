@@ -4,4 +4,5 @@ module.exports = {
     Action: require('./Action'),
     oAuth: require('./oAuth'),
     Rent: require('./Rent'),
+    Comment: require('./Comment')
 };

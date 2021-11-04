@@ -8,11 +8,18 @@ module.exports = {
         try {
             const {email, number} = req.body;
 
-            const userByEmail = await User.findOne({email});
-            const userByNumber = await User.findOne({number});
+            if (email){
+                const userByEmail = await User.findOne({email});
+                if (userByEmail) {
+                    ErrorBuilder(Errors.err409);
+                }
+            }
 
-            if (userByEmail || userByNumber) {
-                ErrorBuilder(Errors.err409);
+            if (number){
+                const userByNumber = await User.findOne({number});
+                if (userByNumber) {
+                    ErrorBuilder(Errors.err409);
+                }
             }
 
             next();
@@ -68,6 +75,23 @@ module.exports = {
             next(e);
         }
     },
+
+    userIdMiddleware: async (req, res, next) => {
+        try {
+            const {user_id} = req.params;
+            const checkId = await User.findById(user_id);
+
+            if (!checkId) {
+                ErrorBuilder(Errors.err404WI);
+            }
+
+            req.user = checkId;
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    }
 };
 
 

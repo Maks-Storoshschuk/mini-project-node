@@ -11,12 +11,11 @@ const userSchema = new Schema({
     email: {
         type: String,
         trim: true,
-        unique: true,
+        unique: false,
     },
     number: {
         type: Number,
         trim: true,
-        unique: true,
     },
     role: {
         type: String,

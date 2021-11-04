@@ -90,4 +90,29 @@ module.exports = {
             next(e);
         }
     },
+
+    checkComment: (req, res, next) => {
+        try {
+
+            if (req.user._id === req.house.user_id){
+                res.json('fuck its your house');
+            }
+            const {comment} = req.body;
+
+            if (!comment){
+                ErrorBuilder(Errors.err422ID);
+            }
+
+            const {error} = houseValidator.commentValidator.validate(comment.toObject);
+
+            if (error) {
+                ErrorBuilder(Errors.err422ID);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
 };

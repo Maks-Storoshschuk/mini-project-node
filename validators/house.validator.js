@@ -39,6 +39,14 @@ const houseValidator = Joi.object({
         .required()
 });
 
+const commentValidator = Joi.object({
+    comment: Joi
+        .string()
+        .min(10)
+        .max(20)
+        .alphanum()
+});
+
 module.exports = {
-    houseValidator
+    houseValidator, commentValidator
 };

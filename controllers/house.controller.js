@@ -1,6 +1,6 @@
 const {constants} = require('../config');
 const {S3services, houseService, emailService, jwtService} = require('../services');
-const {House,User, Rent} = require('../dataBase');
+const {House,User, Rent, Comment} = require('../dataBase');
 
 module.exports = {
     getAllHouses: async (req, res, next) => {
@@ -130,4 +130,44 @@ module.exports = {
             next(e);
         }
     },
+
+    comment: async (req, res, next) => {
+        try {
+            const {_id} = req.house;
+            const {comment} = req.body;
+
+            const newComment = await Comment.create({house_id:_id, user_id:req.user._id,comment});
+
+            const comments = newComment.commentNormalizer(newComment);
+
+            res.json(comments);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    getComments: async (req, res, next) => {
+        try {
+            const allComment = await Comment.find();
+            
+            const normComments = [];
+            
+            allComment.forEach(comment => {
+                const normComment = comment.commentNormalizer(comment);
+                normComments.push(normComment);
+            });
+
+            res.json(normComments);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    getComment:(req, res, next) => {
+        try {
+            res.json(req.comment);
+        } catch (e) {
+            next(e);
+        }
+    }
 };

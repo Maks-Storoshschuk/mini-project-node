@@ -55,4 +55,16 @@ module.exports = {
             next(e);
         }
     },
+
+    logOut: async (req, res, next) => {
+        try {
+            const token = req.token;
+
+            await oAuth.deleteOne({access_token: token});
+
+            res.json('success');
+        } catch (e) {
+            next(e);
+        }
+    }
 };

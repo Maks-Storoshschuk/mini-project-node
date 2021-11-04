@@ -59,6 +59,9 @@ const houseSchema = new Schema({
     },
     for_rent: {
         type: Boolean
+    },
+    comment: {
+        type: String,
     }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 

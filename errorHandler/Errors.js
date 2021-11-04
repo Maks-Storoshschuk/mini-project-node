@@ -3,6 +3,8 @@ module.exports = {
     err400: {message: 'Not supported format', code: 400},
     err400BR: {message: 'Bad request', code: 400},
     err401: {message: 'Invalid token', code: 401},
+    err401MA: {message: 'Only manager or admin can do it', code: 401},
+    err401A: {message: 'Only admin can do it', code: 401},
     err403: {message: 'Access denied', code: 403},
     err403NA: {message: 'User is not active', code: 403},
     err403NE: {message: 'User is not active, please enter email', code: 403},
