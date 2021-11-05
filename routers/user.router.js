@@ -20,7 +20,6 @@ router.put(
 router.delete(
     '/:user_id',
     authMiddleware.checkAccessToken,
-    adminMiddleware.checkRole,
     adminMiddleware.checkAdmin,
     userMiddleware.userIdMiddleware,
     userController.deleteUser
@@ -29,7 +28,6 @@ router.delete(
 router.get(
     '/',
     authMiddleware.checkAccessToken,
-    adminMiddleware.checkRole,
     adminMiddleware.checkManager,
     userController.getUsers
 );
@@ -37,7 +35,6 @@ router.get(
 router.get(
     '/:user_id',
     authMiddleware.checkAccessToken,
-    adminMiddleware.checkRole,
     adminMiddleware.checkManager,
     userMiddleware.userIdMiddleware,
     userController.getUsersById
@@ -46,11 +43,24 @@ router.get(
 router.put(
     '/:user_id',
     adminMiddleware.isUserValid,
-    userMiddleware.userIdMiddleware,
     authMiddleware.checkAccessToken,
-    adminMiddleware.checkRole,
     adminMiddleware.checkAdmin,
+    userMiddleware.userIdMiddleware,
     userController.updateUserAdmin
+);
+
+router.put(
+    '/ban/:user_id',
+    authMiddleware.checkAccessToken,
+    adminMiddleware.checkManager,
+    userMiddleware.userIdMiddleware,
+    userController.banUser,
+);
+
+router.get(
+    '/:user_id/:rating',
+    userMiddleware.userIdMiddleware,
+    userController.ratingUser
 );
 
 

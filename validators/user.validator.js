@@ -60,6 +60,8 @@ const updateUserValidator = Joi.object({
         .trim()
         .regex(regExp.passwordRegExp),
     is_active: Joi
+        .boolean(),
+    ban:Joi
         .boolean()
 });
 

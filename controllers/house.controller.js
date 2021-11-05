@@ -1,6 +1,6 @@
 const {constants} = require('../config');
 const {S3services, houseService, emailService, jwtService} = require('../services');
-const {House,User, Rent, Comment} = require('../dataBase');
+const {House, User, Rent, Comment} = require('../dataBase');
 
 module.exports = {
     getAllHouses: async (req, res, next) => {
@@ -23,6 +23,8 @@ module.exports = {
 
     createHouse: async (req, res, next) => {
         try {
+            req.body.user_email=req.user.email;
+
             let house = await House.create(req.body);
 
             const {pic} = req.files;
@@ -76,7 +78,8 @@ module.exports = {
             await Rent.create({
                 ...rentTokens,
                 house_id: _id,
-                tenant: user.email
+                tenant: user.email,
+                tenant_id: user._id
             });
 
             const {agree_token, refuse_token} = rentTokens;
@@ -121,7 +124,7 @@ module.exports = {
                     house
                 });
 
-                await Rent.findOneAndDelete(agree_token);
+                await Rent.findOneAndUpdate(agree_token,{agree_token: '', refuse_token: ''});
 
                 res.json('ви підтвердили оренду');
             }
@@ -136,7 +139,7 @@ module.exports = {
             const {_id} = req.house;
             const {comment} = req.body;
 
-            const newComment = await Comment.create({house_id:_id, user_id:req.user._id,comment});
+            const newComment = await Comment.create({house_id: _id, user_id: req.user._id, comment});
 
             const comments = newComment.commentNormalizer(newComment);
 
@@ -149,9 +152,9 @@ module.exports = {
     getComments: async (req, res, next) => {
         try {
             const allComment = await Comment.find();
-            
+
             const normComments = [];
-            
+
             allComment.forEach(comment => {
                 const normComment = comment.commentNormalizer(comment);
                 normComments.push(normComment);
@@ -163,11 +166,49 @@ module.exports = {
         }
     },
 
-    getComment:(req, res, next) => {
+    getComment: (req, res, next) => {
         try {
             res.json(req.comment);
         } catch (e) {
             next(e);
         }
-    }
+    },
+
+    deleteComment: async (req, res, next) => {
+        try {
+            const {id} = req.comment;
+
+            await Comment.findOneAndDelete(id);
+
+            res.json('deleted').status(constants.code204);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    deleteHouse: async (req, res, next) => {
+        try {
+            const {_id} = req.house;
+
+            await House.findByIdAndDelete(_id);
+
+            res.json('deleted').status(constants.code204);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    ratingHouse: async (req, res, next) => {
+        try {
+            const {house_id,rating} = req.params;
+
+            const house = await House.findByIdAndUpdate(house_id,{star:rating},{new:true});
+
+            const normHouse = house.houseNormalizer(house);
+
+            res.json(normHouse);
+        } catch (e) {
+            next(e);
+        }
+    },
 };

@@ -1,5 +1,5 @@
 const {adminMiddleware} = require("../middlewares");
-const {authMiddleware,houseMiddleware} = require('../middlewares');
+const {authMiddleware, houseMiddleware} = require('../middlewares');
 const router = require('express').Router();
 
 const {houseController} = require('../controllers');
@@ -52,6 +52,7 @@ router.post(
     '/comment/:house_id',
     authMiddleware.checkAccessToken,
     authMiddleware.isUserActive,
+    adminMiddleware.checkBan,
     houseMiddleware.checkIdHouse,
     houseMiddleware.checkComment,
     houseController.comment
@@ -61,6 +62,30 @@ router.get(
     '/confirmed/:token',
     houseMiddleware.checkRentToken,
     houseController.confirmed
+);
+
+router.delete(
+    '/comments/:comment_id',
+    authMiddleware.checkAccessToken,
+    adminMiddleware.checkRole,
+    adminMiddleware.checkManager,
+    adminMiddleware.checkCommentId,
+    houseController.deleteComment
+);
+
+router.delete(
+    '/:house_id',
+    authMiddleware.checkAccessToken,
+    adminMiddleware.checkRole,
+    adminMiddleware.checkManager,
+    houseMiddleware.checkIdHouse,
+    houseController.deleteHouse
+);
+
+router.get(
+    '/:house_id/:rating',
+    houseMiddleware.checkIdHouse,
+    houseController.ratingHouse
 );
 
 module.exports = router;

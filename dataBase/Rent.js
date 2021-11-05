@@ -16,6 +16,11 @@ const rentSchema = new Schema({
         required: true,
         ref: 'house',
     },
+    tenant_id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'user',
+    },
     tenant: {
         type: String,
         required: true,

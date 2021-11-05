@@ -3,14 +3,6 @@ module.exports = {
         templateName: 'welcome',
         subject: 'Welcome!'
     },
-    orderConfirmed: {
-        templateName: 'order.confirmed',
-        subject: 'Cool!!!'
-    },
-    userBlocked: {
-        templateName: 'ban',
-        subject: 'Ban'
-    },
     buk: {
         templateName: 'buk',
         subject: 'Здоров будь дядько!'
@@ -23,5 +15,13 @@ module.exports = {
         templateName: 'forRent',
         subject: 'Хороші новини!'
     },
+    ratingHouse:{
+        templateName: 'ratingHouse',
+        subject: 'Вітаю!'
+    },
+    ratingUser:{
+        templateName: 'ratingUser',
+        subject: 'Вітаю!'
+    }
 
 };

@@ -11,6 +11,7 @@ block content
     h1 Інформація про штриха  #{user.name}, телефон #{user.number}, емайл #{user.email}.
     H2 фото
     img(src=`${user.avatar}` alt='user' style='width:100px; height:100px;').
+    H1 Oцінка від останнього орендодавця #{user.star}
 
 
     a(href=`http://localhost:5000/houses/confirmed/${agree_token}`) підтвердити.

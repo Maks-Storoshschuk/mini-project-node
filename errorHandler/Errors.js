@@ -7,6 +7,7 @@ module.exports = {
     err401A: {message: 'Only admin can do it', code: 401},
     err403: {message: 'Access denied', code: 403},
     err403NA: {message: 'User is not active', code: 403},
+    err403B: {message: 'User is baned', code: 403},
     err403NE: {message: 'User is not active, please enter email', code: 403},
     err404: {message: 'Wrong email or password', code: 404},
     err404WI: {message: 'Wrong id', code: 404},

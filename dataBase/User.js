@@ -37,6 +37,14 @@ const userSchema = new Schema({
     },
     avatar: {
         type:String
+    },
+    ban:{
+        type: Boolean
+    },
+    star:{
+        type:Number,
+        max:5,
+        min:1,
     }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 

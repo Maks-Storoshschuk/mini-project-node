@@ -9,13 +9,12 @@ module.exports = {
     code400: 400,
 
     welcome: 'welcome',
-    hi:'hi',
-    orderConfirmed: 'order.confirmed',
-    ban: 'ban',
-    FORGOT_PASSWORD: 'forgotPassword',
     buk: 'buk',
     reject: 'reject',
     forRent: 'forRent',
+    ratingHouse: 'ratingHouse',
+    ratingUser: 'ratingUser',
+
 
     MAX_AVATAR_SIZE: 5*1024*1024,
 

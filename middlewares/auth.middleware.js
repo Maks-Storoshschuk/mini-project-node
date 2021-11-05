@@ -116,6 +116,10 @@ module.exports = {
                 ErrorBuilder(Errors.err401);
             }
 
+            if (tokenResponse) {
+                req.userLevel = tokenResponse.user_id.role;
+            }
+
             req.token = token;
             req.user = tokenResponse.user_id.userNormalizer(tokenResponse.user_id);
             req.body.user_id = tokenResponse.user_id;

@@ -1,8 +1,8 @@
-const {userValidator} = require("../validators");
+const {userValidator} = require('../validators');
 const {ErrorBuilder, Errors} = require('../ErrorHandler');
 const {jwtService} = require('../services');
 const {constants} = require('../config');
-const {User, oAuth, Comment} = require('../dataBase');
+const {oAuth, Comment} = require('../dataBase');
 
 module.exports = {
     checkRole: async (req, res, next) => {
@@ -14,11 +14,8 @@ module.exports = {
 
                 const tokenResponse = await oAuth.findOne({access_token: token});
 
-                if (tokenResponse){
-
-                    const user = await User.findById(tokenResponse.user_id);
-
-                    req.userLevel = user.role;
+                if (tokenResponse) {
+                    req.userLevel = tokenResponse.user_id.role;
                 }
             }
 
@@ -84,7 +81,7 @@ module.exports = {
 
             const comment = await Comment.findById(comment_id);
 
-            if(!comment) {
+            if (!comment) {
                 ErrorBuilder(Errors.err404WI);
             }
 
@@ -95,6 +92,22 @@ module.exports = {
             next(e);
         }
     },
+
+    checkBan: (req, res, next) => {
+        try {
+            const {ban} = req.user;
+
+            if(ban){
+                ErrorBuilder(Errors.err403B);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
+    },
+
+
 };
 
 

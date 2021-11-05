@@ -7,6 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const {config} = require('./config');
+const startCron = require('./cron');
 const {Errors} = require('./errorHandler');
 const {houseRouter, userRouter, authRouter} = require('./routers');
 
@@ -46,6 +47,7 @@ app.use('*', (err, req, res, next) => {
 
 app.listen(config.PORT, () => {
     console.log('app listen', config.PORT);
+    startCron();
 });
 
 function _configureCors(origin, callback) {

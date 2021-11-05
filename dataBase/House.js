@@ -48,6 +48,10 @@ const houseSchema = new Schema({
         required: true,
         ref: 'user',
     },
+    user_email: {
+        type: String,
+        required: true,
+    },
     payment: {
         type: Number,
     },
@@ -62,6 +66,11 @@ const houseSchema = new Schema({
     },
     comment: {
         type: String,
+    },
+    star:{
+        type:Number,
+        max:5,
+        min:1,
     }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 

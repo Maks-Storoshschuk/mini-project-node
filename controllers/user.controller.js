@@ -113,7 +113,8 @@ module.exports = {
                 role,
                 is_active,
                 avatar,
-                password
+                password,
+                ban,
             } = req.body;
 
             let user = {};
@@ -127,6 +128,7 @@ module.exports = {
                     role,
                     is_active,
                     avatar,
+                    ban,
                     password: hashedPassword
                 }, {new: true});
 
@@ -139,12 +141,41 @@ module.exports = {
                 role,
                 is_active,
                 avatar,
+                ban
             }, {new: true});
-
 
             const newUser = user.userNormalizer(user);
 
             res.status(constants.code201).json(newUser);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    banUser: async (req, res, next) => {
+        try {
+            const {user_id} = req.params;
+            const {ban} = req.body;
+
+            const user = await User.findByIdAndUpdate(user_id,{ban},{new:true});
+
+            const normUser = user.userNormalizer(user);
+
+            res.json(normUser);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    ratingUser: async (req, res, next) => {
+        try {
+            const {user_id,rating} = req.params;
+
+            const user = await User.findByIdAndUpdate(user_id,{star:rating},{new:true});
+
+            const normUser = user.userNormalizer(user);
+
+            res.json(normUser);
         } catch (e) {
             next(e);
         }
