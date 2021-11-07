@@ -94,12 +94,12 @@ module.exports = {
     checkComment: (req, res, next) => {
         try {
 
-            if (req.user._id === req.house.user_id){
-                res.json('fuck its your house');
+            if (req.user._id.toString() === req.house.user_id.toString()) {
+                ErrorBuilder(Errors.err401F);
             }
             const {comment} = req.body;
 
-            if (!comment){
+            if (!comment) {
                 ErrorBuilder(Errors.err422ID);
             }
 

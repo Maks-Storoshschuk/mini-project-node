@@ -1,3 +1,7 @@
+const ErrorBuilder = require("../errorHandler/errorHandler");
+const {MAX_AVATAR_SIZE} = require("../config/constans");
+const {Errors} = require("../errorHandler");
+const {PHOTOS_MIMETYPES} = require("../config/constans");
 const {constants} = require('../config');
 const {S3services, houseService, emailService, jwtService} = require('../services');
 const {House, User, Rent, Comment} = require('../dataBase');
@@ -24,15 +28,29 @@ module.exports = {
     createHouse: async (req, res, next) => {
         try {
             req.body.user_email=req.user.email;
+            req.body.user_id = req.user._id;
 
             let house = await House.create(req.body);
 
-            const {pic} = req.files;
+            if (req.files){
 
-            if (pic) {
-                const uploadInfo = await S3services.uploadImage(pic, 'houses', house._id.toString());
+                const {pic} = req.files;
 
-                house = await House.findByIdAndUpdate(house._id, {pic: uploadInfo.Location}, {new: true});
+                if (pic) {
+                    const {name, size, mimetype} = pic;
+
+                    if (!PHOTOS_MIMETYPES.includes(mimetype)) {
+                        ErrorBuilder(Errors.err400);
+                    }
+
+                    if (MAX_AVATAR_SIZE < size) {
+                        ErrorBuilder({message: `Image ${name} to large`, code: 400});
+                    }
+
+                    const uploadInfo = await S3services.uploadImage(pic, 'houses', house._id.toString());
+
+                    house = await House.findByIdAndUpdate(house._id, {pic: uploadInfo.Location}, {new: true});
+                }
             }
 
             const normHouse = house.houseNormalizer(house);

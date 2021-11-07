@@ -5,6 +5,7 @@ module.exports = {
     err401: {message: 'Invalid token', code: 401},
     err401MA: {message: 'Only manager or admin can do it', code: 401},
     err401A: {message: 'Only admin can do it', code: 401},
+    err401F: {message: 'Fuck its my house', code: 401},
     err403: {message: 'Access denied', code: 403},
     err403NA: {message: 'User is not active', code: 403},
     err403B: {message: 'User is baned', code: 403},
