@@ -1,8 +1,8 @@
+const {Action, oAuth, User} = require('../dataBase');
 const {authValidator} = require('../validators');
+const {constants, tokenTypeEnum} = require('../config');
 const {ErrorBuilder, Errors} = require('../errorHandler');
-const {Action, User, oAuth} = require('../dataBase');
 const {jwtService} = require('../services');
-const {tokenTypeEnum, constants} = require('../config');
 
 module.exports = {
     checkActivateToken: async (req, res, next) => {

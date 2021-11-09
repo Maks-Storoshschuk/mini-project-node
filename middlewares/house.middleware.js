@@ -3,10 +3,10 @@ const utc = require('dayjs/plugin/utc');
 
 dayJs.extend(utc);
 
-const {jwtService} = require('../services');
+const {ErrorBuilder, Errors} = require('../errorHandler');
 const {House, Rent} = require('../dataBase');
 const {houseValidator} = require('../validators');
-const {ErrorBuilder, Errors} = require('../errorHandler');
+const {jwtService} = require('../services');
 
 module.exports = {
     isHouseValid: (req, res, next) => {
@@ -114,5 +114,4 @@ module.exports = {
             next(e);
         }
     },
-
 };

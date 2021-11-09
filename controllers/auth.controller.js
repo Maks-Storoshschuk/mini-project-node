@@ -1,5 +1,5 @@
-const {jwtService} = require('../services');
 const {User, oAuth} = require('../dataBase');
+const {jwtService} = require('../services');
 
 module.exports = {
     activate: async (req, res, next) => {

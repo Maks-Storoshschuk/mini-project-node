@@ -1,7 +1,7 @@
 const {constants} = require('../config');
+const {emailValidator, userValidator} = require('../validators');
 const {ErrorBuilder, Errors} = require('../errorHandler');
 const {User} = require('../dataBase');
-const {userValidator, emailValidator} = require('../validators');
 
 module.exports = {
     createUserMiddleware: async (req, res, next) => {

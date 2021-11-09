@@ -1,8 +1,9 @@
-const {MAX_AVATAR_SIZE,PHOTOS_MIMETYPES} = require('../config/constans');
-const {Errors,ErrorBuilder} = require('../errorHandler');
 const {constants} = require('../config');
-const {S3services, houseService, emailService, jwtService} = require('../services');
-const {House, User, Rent, Comment} = require('../dataBase');
+const {Comment, House, Rent, User} = require('../dataBase');
+const {ErrorBuilder, Errors} = require('../errorHandler');
+const {MAX_AVATAR_SIZE, PHOTOS_MIMETYPES} = require('../config/constans');
+const {emailService, houseService, jwtService, S3services} = require('../services');
+
 
 module.exports = {
     getAllHouses: async (req, res, next) => {

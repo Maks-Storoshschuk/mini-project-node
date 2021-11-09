@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
 
-const {ErrorBuilder, Errors} = require('../errorHandler');
 const {
     JWT_ACCESS_SECRET,
-    JWT_REFRESH_SECRET,
     JWT_ACTION_SECRET,
     JWT_AGREE_SECRET,
+    JWT_REFRESH_SECRET,
     JWT_REFUSE_SECRET
 } = require('../config/config');
+const {ErrorBuilder, Errors} = require('../errorHandler');
 const {tokenTypeEnum} = require('../config');
 
 module.exports = {
@@ -71,5 +71,4 @@ module.exports = {
             }
         }
     },
-
 };

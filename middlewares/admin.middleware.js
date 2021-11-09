@@ -1,8 +1,8 @@
-const {userValidator} = require('../validators');
+const {constants} = require('../config');
+const {Comment, oAuth} = require('../dataBase');
 const {ErrorBuilder, Errors} = require('../ErrorHandler');
 const {jwtService} = require('../services');
-const {constants} = require('../config');
-const {oAuth, Comment} = require('../dataBase');
+const {userValidator} = require('../validators');
 
 module.exports = {
     checkRole: async (req, res, next) => {
@@ -28,6 +28,7 @@ module.exports = {
             next(e);
         }
     },
+
     checkManager: (req, res, next) => {
         try {
 

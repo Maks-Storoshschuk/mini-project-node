@@ -1,8 +1,8 @@
-const userService = require('../services/user.service');
-const passwordService = require('../services/password.service');
-const {tokenTypeEnum, constants} = require('../config');
+const {Action, Comment, oAuth, House, User,} = require('../dataBase');
+const {constants, tokenTypeEnum} = require('../config');
 const {emailService, jwtService, S3services} = require('../services');
-const {User, Action, oAuth, House, Comment} = require('../dataBase');
+const passwordService = require('../services/password.service');
+const userService = require('../services/user.service');
 
 module.exports = {
 

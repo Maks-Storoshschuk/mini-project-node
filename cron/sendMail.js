@@ -4,8 +4,8 @@ const {constants} = require('../config');
 
 dayJs.extend(utc);
 
-const {Rent, House} = require('../dataBase');
 const {emailService} = require('../services');
+const {House, Rent} = require('../dataBase');
 
 module.exports = async () => {
 

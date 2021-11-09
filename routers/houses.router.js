@@ -1,5 +1,4 @@
-const {adminMiddleware} = require("../middlewares");
-const {authMiddleware, houseMiddleware} = require('../middlewares');
+const {adminMiddleware, authMiddleware, houseMiddleware, } = require('../middlewares');
 const router = require('express').Router();
 
 const {houseController} = require('../controllers');
@@ -23,7 +22,6 @@ router.get(
     adminMiddleware.checkManager,
     houseController.getComments
 );
-
 router.get(
     '/comments/:comment_id',
     authMiddleware.checkAccessToken,
@@ -32,22 +30,6 @@ router.get(
     adminMiddleware.checkCommentId,
     houseController.getComment
 );
-
-router.get(
-    '/:house_id',
-    houseMiddleware.checkIdHouse,
-    houseController.getHouse
-);
-
-router.put(
-    '/:house_id',
-    authMiddleware.checkAccessToken,
-    authMiddleware.isUserActive,
-    houseMiddleware.checkIdHouse,
-    houseMiddleware.checkDate,
-    houseController.buckHouse
-);
-
 router.post(
     '/comment/:house_id',
     authMiddleware.checkAccessToken,
@@ -57,13 +39,6 @@ router.post(
     houseMiddleware.checkComment,
     houseController.comment
 );
-
-router.get(
-    '/confirmed/:token',
-    houseMiddleware.checkRentToken,
-    houseController.confirmed
-);
-
 router.delete(
     '/comments/:comment_id',
     authMiddleware.checkAccessToken,
@@ -73,6 +48,19 @@ router.delete(
     houseController.deleteComment
 );
 
+router.get(
+    '/:house_id',
+    houseMiddleware.checkIdHouse,
+    houseController.getHouse
+);
+router.put(
+    '/:house_id',
+    authMiddleware.checkAccessToken,
+    authMiddleware.isUserActive,
+    houseMiddleware.checkIdHouse,
+    houseMiddleware.checkDate,
+    houseController.buckHouse
+);
 router.delete(
     '/:house_id',
     authMiddleware.checkAccessToken,
@@ -81,11 +69,16 @@ router.delete(
     houseMiddleware.checkIdHouse,
     houseController.deleteHouse
 );
-
 router.get(
     '/:house_id/:rating',
     houseMiddleware.checkIdHouse,
     houseController.ratingHouse
+);
+
+router.get(
+    '/confirmed/:token',
+    houseMiddleware.checkRentToken,
+    houseController.confirmed
 );
 
 module.exports = router;

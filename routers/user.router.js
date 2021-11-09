@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
+const {adminMiddleware, authMiddleware, fileMiddleware, userMiddleware} = require('../middlewares');
 const {userController} = require('../controllers');
-const {fileMiddleware, userMiddleware, authMiddleware, adminMiddleware} = require('../middlewares');
 
 router.post(
     '/',
@@ -17,14 +17,6 @@ router.put(
     userMiddleware.isEmailValid,
     userController.updateUser
 );
-router.delete(
-    '/:user_id',
-    authMiddleware.checkAccessToken,
-    adminMiddleware.checkAdmin,
-    userMiddleware.userIdMiddleware,
-    userController.deleteUser
-);
-
 router.get(
     '/',
     authMiddleware.checkAccessToken,
@@ -32,6 +24,13 @@ router.get(
     userController.getUsers
 );
 
+router.delete(
+    '/:user_id',
+    authMiddleware.checkAccessToken,
+    adminMiddleware.checkAdmin,
+    userMiddleware.userIdMiddleware,
+    userController.deleteUser
+);
 router.get(
     '/:user_id',
     authMiddleware.checkAccessToken,
@@ -39,7 +38,6 @@ router.get(
     userMiddleware.userIdMiddleware,
     userController.getUsersById
 );
-
 router.put(
     '/:user_id',
     adminMiddleware.isUserValid,
@@ -47,6 +45,11 @@ router.put(
     adminMiddleware.checkAdmin,
     userMiddleware.userIdMiddleware,
     userController.updateUserAdmin
+);
+router.get(
+    '/:user_id/:rating',
+    userMiddleware.userIdMiddleware,
+    userController.ratingUser
 );
 
 router.put(
@@ -56,12 +59,5 @@ router.put(
     userMiddleware.userIdMiddleware,
     userController.banUser,
 );
-
-router.get(
-    '/:user_id/:rating',
-    userMiddleware.userIdMiddleware,
-    userController.ratingUser
-);
-
 
 module.exports = router;

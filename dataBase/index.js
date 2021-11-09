@@ -1,8 +1,8 @@
 module.exports = {
-    House: require('./House'),
-    User: require('./User'),
     Action: require('./Action'),
+    Comment: require('./Comment'),
+    House: require('./House'),
     oAuth: require('./oAuth'),
     Rent: require('./Rent'),
-    Comment: require('./Comment')
+    User: require('./User')
 };
