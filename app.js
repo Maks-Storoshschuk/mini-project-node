@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const {config} = require('./config');
 const startCron = require('./cron');
-const {Errors} = require('./errorHandler');
+const {Errors,ErrorBuilder} = require('./errorHandler');
 const {houseRouter, userRouter, authRouter} = require('./routers');
 
 const app = express();
