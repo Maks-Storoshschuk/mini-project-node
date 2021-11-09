@@ -29,7 +29,7 @@ module.exports = {
             const normUser = user.userNormalizer(user);
 
             res.json({
-                normUser,
+                ...normUser,
                 ...tokenPair
             });
         } catch (e) {
