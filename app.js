@@ -63,3 +63,4 @@ function _configureCors(origin, callback) {
 
     return callback(null, true);
 }
+

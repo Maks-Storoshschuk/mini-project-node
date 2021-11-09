@@ -1,0 +1,1361 @@
+{
+	"info": {
+		"_postman_id": "ec4bb304-4a66-4bdb-b231-f5323c6c15b2",
+		"name": "mini project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "postHouse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pic",
+							"type": "file",
+							"src": "/C:/Users/Maks/Desktop/download.jpg"
+						},
+						{
+							"key": "price",
+							"value": "2500",
+							"type": "text"
+						},
+						{
+							"key": "person",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "volume",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "region",
+							"value": "lviv",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "lviv",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "ukraine",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "shgsiu iusghisu uibib bbiibbspifauiu [a[g [uauu u uu uuuuuagguagh uaghpiu ag uagpa ubaug apgiuabg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/houses",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses"
+					],
+					"query": [
+						{
+							"key": "perPage",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "u",
+							"disabled": true
+						},
+						{
+							"key": "price.gte",
+							"value": "3000",
+							"disabled": true
+						},
+						{
+							"key": "price.lte",
+							"value": "300",
+							"disabled": true
+						},
+						{
+							"key": "volume.gte",
+							"value": "300",
+							"disabled": true
+						},
+						{
+							"key": "volume.lte",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "person.lte",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "maksuser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "maks1715",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "torschuk@tupiur.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "380037946747",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "manager",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/users/",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHouses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pic",
+							"type": "file",
+							"src": "/C:/Users/Maks/Desktop/download.jpg"
+						},
+						{
+							"key": "price",
+							"value": "2500",
+							"type": "text"
+						},
+						{
+							"key": "person",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "volume",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "region",
+							"value": "lviv",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "lviv",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "ukraine",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "6180307cd88ac4702c6c6bbc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/houses?perPage=20&page=1&country=u&price.gte=300&price.lte=3000&volume.gte=20&volume.lte=200&person.lte=5",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses"
+					],
+					"query": [
+						{
+							"key": "perPage",
+							"value": "20"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "country",
+							"value": "u"
+						},
+						{
+							"key": "price.gte",
+							"value": "300"
+						},
+						{
+							"key": "price.lte",
+							"value": "3000"
+						},
+						{
+							"key": "volume.gte",
+							"value": "20"
+						},
+						{
+							"key": "volume.lte",
+							"value": "200"
+						},
+						{
+							"key": "person.lte",
+							"value": "5"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const jsonBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.environment.set(\"access_token\", jsonBody.access_token);\r",
+							"pm.environment.set(\"refresh_token\", jsonBody.refresh_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "number",
+							"value": "380037946745.0",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "maks1715",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "torschuk@tupoiur.com",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/auth/",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putEmail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "maksstoroschuk@gmiil.com",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/users",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHouseById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/houses/61842d2b2f2b6601ed03ead6",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"61842d2b2f2b6601ed03ead6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bukHouseById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "from",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "to",
+							"value": "30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/houses/61841e7cf42d9de52913032c",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"61841e7cf42d9de52913032c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refreshToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const jsonBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.environment.set(\"access_token\", jsonBody.access_token);\r",
+							"pm.environment.set(\"refresh_token\", jsonBody.refresh_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{refresh_token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pic",
+							"type": "file",
+							"src": "/C:/Users/Maks/Desktop/download.jpg"
+						},
+						{
+							"key": "price",
+							"value": "2500",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "person",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "volume",
+							"value": "11",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "region",
+							"value": "lviv",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "lviv",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "ukraine",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "shgsiu iusghisu uibib bbiibbspifauiu [a[g [uauu u uu uuuuuagguagh uaghpiu ag uagpa ubaug apgiuabg",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/auth/refresh/",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"auth",
+						"refresh",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logOut",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/auth/logOut",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"auth",
+						"logOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "comment",
+							"value": "джмфіль тестовий комент\n",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/houses/comment/618801a54801a7e26f44d3e7",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"comment",
+						"618801a54801a7e26f44d3e7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_host}}/users/6183d1be9e936ee72dea0f61",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						"6183d1be9e936ee72dea0f61"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_host}}/users/",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "maksSerr",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "maks1715",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "maksstorosch@uk.gmai.com",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "383563569912",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "manager",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/users/618422161dfbe2597ae1ddaf",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						"618422161dfbe2597ae1ddaf"
+					],
+					"query": [
+						{
+							"key": "price.gte",
+							"value": "3000",
+							"disabled": true
+						},
+						{
+							"key": "price.lte",
+							"value": "300",
+							"disabled": true
+						},
+						{
+							"key": "volume.gte",
+							"value": "300",
+							"disabled": true
+						},
+						{
+							"key": "volume.lte",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "person.lte",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/users/61841500b4e0aa3a88a4027a",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						"61841500b4e0aa3a88a4027a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getComments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_host}}/houses/comments",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCommentByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_host}}/houses/comments/6185035365c99b66fe841e1a",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"comments",
+						"6185035365c99b66fe841e1a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteComment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://3000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_host}}/houses/comments/6185035365c99b66fe841e1a",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"comments",
+						"6185035365c99b66fe841e1a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteHouseById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_host}}/houses/61842d2b2f2b6601ed03ead6",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"houses",
+						"61842d2b2f2b6601ed03ead6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "banUserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ban",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_host}}/users/ban/61850808d5aad1cad5e5c5ff",
+					"host": [
+						"{{api_host}}"
+					],
+					"path": [
+						"users",
+						"ban",
+						"61850808d5aad1cad5e5c5ff"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
