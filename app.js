@@ -6,7 +6,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 require('dotenv').config();
 
-const config = require('./config/config');
+const {config} = require('./config');
 const startCron = require('./cron');
 const {Errors,ErrorBuilder} = require('./errorHandler');
 const {houseRouter, userRouter, authRouter} = require('./routers');
