@@ -100,6 +100,7 @@ module.exports = {
             next(e);
         }
     },
+
     checkAccessToken: async (req, res, next) => {
         try {
             const token = req.get(constants.AUTHORIZATION);

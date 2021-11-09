@@ -67,10 +67,10 @@ const houseSchema = new Schema({
     comment: {
         type: String,
     },
-    star:{
-        type:Number,
-        max:5,
-        min:1,
+    star: {
+        type: Number,
+        max: 5,
+        min: 1,
     }
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 

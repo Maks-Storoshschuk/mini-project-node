@@ -97,7 +97,7 @@ module.exports = {
         try {
             const {ban} = req.user;
 
-            if(ban){
+            if (ban) {
                 ErrorBuilder(Errors.err403B);
             }
 

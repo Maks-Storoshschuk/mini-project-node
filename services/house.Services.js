@@ -44,13 +44,14 @@ module.exports = {
         if (Object.values(priceFilter).length) {
             findObject.price = priceFilter;
         }
+
         if (Object.values(volumeFilter).length) {
             findObject.volume = volumeFilter;
         }
+
         if (Object.values(personsFilter).length) {
             findObject.person = personsFilter;
         }
-
 
         const orderBy = order === 'asc' ? -1 : 1;
 

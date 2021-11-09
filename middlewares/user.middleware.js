@@ -8,14 +8,14 @@ module.exports = {
         try {
             const {email, number} = req.body;
 
-            if (email){
+            if (email) {
                 const userByEmail = await User.findOne({email});
                 if (userByEmail) {
                     ErrorBuilder(Errors.err409);
                 }
             }
 
-            if (number){
+            if (number) {
                 const userByNumber = await User.findOne({number});
                 if (userByNumber) {
                     ErrorBuilder(Errors.err409);

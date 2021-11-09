@@ -14,7 +14,7 @@ const commentSchema = new Schema({
         required: true,
         ref: 'user',
     },
-    
+
 }, {timestamps: true, toObject: {virtuals: true}, toJSON: {virtuals: true}});
 
 commentSchema.methods = {
