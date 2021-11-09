@@ -193,9 +193,8 @@ module.exports = {
 
     deleteComment: async (req, res, next) => {
         try {
-            const {id} = req.comment;
-
-            await Comment.findOneAndDelete(id);
+            const {comment_id} = req.params;
+            await Comment.findOneAndDelete({_id:comment_id});
 
             res.json('deleted').status(constants.code204);
         } catch (e) {

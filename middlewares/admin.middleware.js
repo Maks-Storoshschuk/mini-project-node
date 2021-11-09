@@ -80,7 +80,7 @@ module.exports = {
         try {
             const {comment_id} = req.params;
 
-            const comment = await Comment.findById(comment_id);
+            const comment = await Comment.findOne({_id:comment_id});
 
             if (!comment) {
                 ErrorBuilder(Errors.err404WI);
