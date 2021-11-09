@@ -1,5 +1,5 @@
-const userService = require("../services/user.service");
-const passwordService = require("../services/password.service");
+const userService = require('../services/user.service');
+const passwordService = require('../services/password.service');
 const {tokenTypeEnum, constants} = require('../config');
 const {emailService, jwtService, S3services} = require('../services');
 const {User, Action, oAuth, House, Comment} = require('../dataBase');
@@ -38,6 +38,7 @@ module.exports = {
 
         }
     },
+
     updateUser: async (req, res, next) => {
         try {
             const {user_id, email} = req.body;
@@ -157,7 +158,7 @@ module.exports = {
             const {user_id} = req.params;
             const {ban} = req.body;
 
-            const user = await User.findByIdAndUpdate(user_id,{ban},{new:true});
+            const user = await User.findByIdAndUpdate(user_id, {ban}, {new: true});
 
             const normUser = user.userNormalizer(user);
 
@@ -169,9 +170,9 @@ module.exports = {
 
     ratingUser: async (req, res, next) => {
         try {
-            const {user_id,rating} = req.params;
+            const {user_id, rating} = req.params;
 
-            const user = await User.findByIdAndUpdate(user_id,{star:rating},{new:true});
+            const user = await User.findByIdAndUpdate(user_id, {star: rating}, {new: true});
 
             const normUser = user.userNormalizer(user);
 

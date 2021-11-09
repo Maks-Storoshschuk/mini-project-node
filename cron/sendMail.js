@@ -1,6 +1,6 @@
 const dayJs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
-const {constants} = require("../config");
+const {constants} = require('../config');
 
 dayJs.extend(utc);
 
@@ -22,9 +22,9 @@ module.exports = async () => {
 
     const deleted = await Rent.findOneAndDelete({house_id: _id});
 
-    const {tenant,tenant_id} = deleted;
+    const {tenant, tenant_id} = deleted;
 
     await emailService.sendMail(tenant, constants.ratingHouse, _id);
 
-    await emailService.sendMail(user_email, constants.ratingUser, {user_id:tenant_id});
+    await emailService.sendMail(user_email, constants.ratingUser, {user_id: tenant_id});
 };

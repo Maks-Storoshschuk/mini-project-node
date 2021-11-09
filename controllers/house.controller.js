@@ -1,7 +1,5 @@
-const ErrorBuilder = require("../errorHandler/errorHandler");
-const {MAX_AVATAR_SIZE} = require("../config/constans");
-const {Errors} = require("../errorHandler");
-const {PHOTOS_MIMETYPES} = require("../config/constans");
+const {MAX_AVATAR_SIZE,PHOTOS_MIMETYPES} = require('../config/constans');
+const {Errors,ErrorBuilder} = require('../errorHandler');
 const {constants} = require('../config');
 const {S3services, houseService, emailService, jwtService} = require('../services');
 const {House, User, Rent, Comment} = require('../dataBase');
@@ -27,12 +25,12 @@ module.exports = {
 
     createHouse: async (req, res, next) => {
         try {
-            req.body.user_email=req.user.email;
+            req.body.user_email = req.user.email;
             req.body.user_id = req.user._id;
 
             let house = await House.create(req.body);
 
-            if (req.files){
+            if (req.files) {
 
                 const {pic} = req.files;
 
@@ -142,7 +140,7 @@ module.exports = {
                     house
                 });
 
-                await Rent.findOneAndUpdate(agree_token,{agree_token: '', refuse_token: ''});
+                await Rent.findOneAndUpdate(agree_token, {agree_token: '', refuse_token: ''});
 
                 res.json('ви підтвердили оренду');
             }
@@ -218,9 +216,9 @@ module.exports = {
 
     ratingHouse: async (req, res, next) => {
         try {
-            const {house_id,rating} = req.params;
+            const {house_id, rating} = req.params;
 
-            const house = await House.findByIdAndUpdate(house_id,{star:rating},{new:true});
+            const house = await House.findByIdAndUpdate(house_id, {star: rating}, {new: true});
 
             const normHouse = house.houseNormalizer(house);
 
