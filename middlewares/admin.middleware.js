@@ -1,6 +1,6 @@
 const {constants} = require('../config');
 const {Comment, oAuth} = require('../dataBase');
-const {ErrorBuilder, Errors} = require('../ErrorHandler');
+const {ErrorBuilder, Errors} = require('../errorHandler');
 const {jwtService} = require('../services');
 const {userValidator} = require('../validators');
 
